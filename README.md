@@ -123,6 +123,47 @@ aws secretsmanager create-secret \
 kubectl apply -f examples/external-secret.yaml
 ```
 
+```bash
+cd terraform
+cp terraform.tfvars.example terraform.tfvars
+# Fill in your cluster name, OIDC ARN, and AWS region
+terraform init
+terraform apply
+```
+
+### 2. Install External Secrets Operator
+
+Update `helm/external-secrets-operator/values.yaml` with the IAM role ARN from step 1:
+
+```yaml
+serviceAccount:
+  annotations:
+    eks.amazonaws.com/role-arn: "arn:aws:iam::123456789012:role/my-cluster-external-secrets"
+```
+
+Then install via Helm:
+
+```bash
+helm install external-secrets \
+  helm/external-secrets-operator \
+  --namespace external-secrets \
+  --create-namespace
+```
+
+Or let ArgoCD manage it — point an Application at `helm/external-secrets-operator/`.
+
+### 3. Define your secrets
+
+```bash
+# Store a secret in AWS Secrets Manager
+aws secretsmanager create-secret \
+  --name myapp/database/password \
+  --secret-string '{"password":"supersecret"}'
+
+# Apply the ExternalSecret to sync it to K8s
+kubectl apply -f examples/external-secret.yaml
+```
+
 ## Storing secrets
 
 All secrets follow the naming convention `<app>/<component>/<key>`:
