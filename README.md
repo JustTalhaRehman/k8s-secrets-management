@@ -184,3 +184,29 @@ Secrets sync every 1 hour by default. Change in your ExternalSecret:
 spec:
   refreshInterval: 30m
 ```
+
+## Use Case
+
+Ideal for teams practicing GitOps who need to:
+- Eliminate secrets from Git repositories
+- Automate secret lifecycle management
+- Maintain compliance with security best practices
+- Simplify secret distribution across Kubernetes namespaces
+
+## Security Considerations
+
+- **IRSA Authentication**: No static credentials stored in the cluster
+- **Least Privilege**: IAM policies scoped to specific secret prefixes
+- **Encryption**: All secrets encrypted at rest in AWS Secrets Manager
+- **Audit Trail**: CloudTrail logging for all secret access
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
