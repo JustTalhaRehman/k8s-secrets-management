@@ -1,3 +1,5 @@
+# Input variables for External Secrets Operator IRSA configuration
+
 variable "cluster_name" {
   description = "Name of the EKS cluster"
   type        = string
