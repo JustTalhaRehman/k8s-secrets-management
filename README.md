@@ -50,6 +50,27 @@ k8s-secrets-management/
     └── secret-store.yaml      # Namespace-scoped store example
 ```
 
+## Structure
+
+```
+k8s-secrets-management/
+├── terraform/
+│   ├── main.tf           # Provider config + state backend
+│   ├── variables.tf
+│   ├── outputs.tf
+│   └── pod-identity.tf   # IRSA role for ESO → AWS Secrets Manager
+├── helm/
+│   └── external-secrets-operator/
+│       ├── Chart.yaml
+│       ├── values.yaml
+│       └── templates/
+│           ├── cluster-secret-store.yaml
+│           └── pod-identity-annotation.yaml
+└── examples/
+    ├── external-secret.yaml   # How to define a secret sync
+    └── secret-store.yaml      # Namespace-scoped store example
+```
+
 ## Prerequisites
 
 - EKS cluster with OIDC provider enabled
