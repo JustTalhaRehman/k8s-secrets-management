@@ -1,6 +1,6 @@
 serviceAccount:
   annotations:
-    eks.amazonaws.com/role-arn: "arn:aws:iam::123456789012:role/my-cluster-external-secrets"
+    eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/my-cluster-external-secrets
 
 clusterSecretStore:
   enabled: true
