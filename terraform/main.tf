@@ -1,3 +1,4 @@
+# Terraform configuration for External Secrets Operator IRSA setup
 terraform {
   required_version = ">= 1.5.0"
 
@@ -8,6 +9,7 @@ terraform {
     }
   }
 
+  # S3 backend for remote state storage with DynamoDB locking
   backend "s3" {
     bucket         = "your-terraform-state-bucket"
     key            = "eks/external-secrets/terraform.tfstate"
@@ -17,6 +19,7 @@ terraform {
   }
 }
 
+# AWS provider configuration
 provider "aws" {
   region = var.aws_region
 }
