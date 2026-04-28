@@ -2,6 +2,14 @@
 
 A zero-secrets-in-git setup for Kubernetes. All secrets live in AWS Secrets Manager. The External Secrets Operator pulls them into Kubernetes Secrets on a schedule — no manual `kubectl create secret`, no secrets in YAML files, no secrets in Git.
 
+## Features
+
+- **Zero secrets in Git**: No sensitive data stored in version control
+- **Automated sync**: External Secrets Operator polls AWS Secrets Manager on configurable schedule
+- **IRSA authentication**: Secure IAM role for service accounts, no static credentials
+- **GitOps ready**: Helm charts compatible with ArgoCD and other GitOps tools
+- **Namespace isolation**: Support for both cluster-wide and namespace-scoped secret stores
+
 ## How it works
 
 ```
