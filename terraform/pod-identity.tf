@@ -2,7 +2,7 @@
 # This creates an IAM role that can be assumed by the External Secrets Operator
 # service account to access AWS Secrets Manager
 module "external_secrets_irsa" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks?ref=v5.39.0"
+  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks?ref=39e42e1f847afe5fd1c1c98c64871817e37e33ca"
   version = "~> 5.0"
 
   # Role name based on cluster name
