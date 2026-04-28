@@ -1,3 +1,6 @@
+# ServiceAccount for External Secrets Operator with IRSA annotation
+# This service account will be used by External Secrets Operator pods
+# and will assume the IAM role specified in the annotation
 apiVersion: v1
 kind: ServiceAccount
 metadata:
